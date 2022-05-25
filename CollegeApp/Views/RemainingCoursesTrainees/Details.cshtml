@@ -1,0 +1,74 @@
+﻿@model CollegeApp.Models.TrainingGuide.RemainingCoursesTrainee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RemainingCoursesTrainee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MajorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MajorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GPA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GPA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RemainingCoursesTraineeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

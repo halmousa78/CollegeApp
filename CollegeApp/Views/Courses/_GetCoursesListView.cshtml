@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CollegeApp.Models.Course>
+
+
+                    <table class="table table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.level)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Major.MajorName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CourseId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CourseName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Prerequisites)
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.level)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Major.MajorName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CourseId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CourseName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Prerequisites)
+                                    </td>
+
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+
+
+                    </table>
+              

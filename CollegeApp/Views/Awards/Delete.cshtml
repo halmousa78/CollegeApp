@@ -1,0 +1,52 @@
+﻿@model CollegeApp.Models.Cvs.Award
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">الجوائز</strong>
+        </div>
+        <div class="card-body">
+
+            <h3>هل انت متاكد من حذف هذا السجل ؟</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+
+                    @*<dt>
+                        @Html.DisplayNameFor(model => model.AwardDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AwardDate)
+                    </dd>*@
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AwardDetail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AwardDetail)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="@CollegeApp.Resource.Resource.Delete" class="@CollegeApp.Resource.Resource.DeleteStyle" /><br /><br />
+                @Html.ActionLink(@CollegeApp.Resource.Resource.Back, "Index")
+            </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

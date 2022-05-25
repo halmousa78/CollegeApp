@@ -1,0 +1,121 @@
+﻿@model IEnumerable<CollegeApp.Models.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">المقررات التدريبية</strong>
+        </div>
+        <div class="card-body">
+            <div style="text-align:center;">
+                <div class="table-responsive">
+                    @Html.AntiForgeryToken()
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-1">
+                                @Html.Label("التخصص", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("MajorName", (IEnumerable<SelectListItem>)ViewBag.majorSelectList, new { @class = "form-control" })
+                            </div>
+                            <div class="col-1">
+                                <input type="submit" value="بحث" class="btn btn-default" onclick="getData()" />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                        @*<table class="table table-borderless table-striped table-earning">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.level)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Major.MajorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CourseId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CourseName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prerequisites)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.level)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Major.MajorName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CourseId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CourseName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Prerequisites)
+                            </td>
+
+
+                        </tr>
+                    }
+
+                </tbody>
+
+
+
+            </table>*@
+                    </div>
+                <br />
+                    <div id="div3">
+
+                    </div>
+
+                </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function getData() {
+            var getMajorName = $("#MajorName").val();
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/Courses/GetCourses",
+                data: JSON.stringify({ MajorName: getMajorName }),
+                dataType: "html",
+                success: function (result) {
+                    $("#div3").html(result);                  
+                },
+
+                error: function (xhr, status, error) {
+                    
+                    alert(xhr.responseText);
+                }
+
+
+            });
+        }
+           
+        
+
+    </script>
+    }

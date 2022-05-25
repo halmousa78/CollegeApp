@@ -1,0 +1,90 @@
+﻿@model CollegeApp.Models.TrainingGuide.TrainingGuide
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainingGuide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Major.MajorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Major.MajorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramType.ProgramTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramType.ProgramTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Term.TermName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term.TermName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscussingTheTrainingPlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscussingTheTrainingPlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReasonsForFailureInTraining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReasonsForFailureInTraining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TrainingGuideId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,84 @@
+﻿@model CollegeApp.Models.Cvs.Qualification
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">اضافة المؤهلات</strong>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                   
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Degree, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("Degree", new List<SelectListItem>
+                            {
+                            new SelectListItem{ Text="دكتوراه", Value = "دكتوراه" },
+                            new SelectListItem{ Text="ماجستير", Value = "ماجستير" },
+                            new SelectListItem{ Text="بكالرويوس", Value = "بكالرويوس" },
+                            new SelectListItem{ Text="دبلوم", Value = "دبلوم" }
+
+                            }, "اختر من القائمة", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.institute, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.institute, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.institute, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.year, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.year, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.year, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.major, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.major, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.major, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="اضافة" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        <div>
+            @Html.ActionLink("رجوع لصفحة السابقة", "Index")
+        </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

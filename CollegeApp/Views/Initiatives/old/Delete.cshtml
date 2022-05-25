@@ -1,0 +1,80 @@
+﻿@model CollegeApp.Models.plan.Initiative
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Initiative</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Standard.StandardId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Standard.StandardId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitiativeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitiativeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionRequirements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionRequirements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponsibleParty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponsibleParty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AchievementStandard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AchievementStandard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitiativeStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitiativeStatus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

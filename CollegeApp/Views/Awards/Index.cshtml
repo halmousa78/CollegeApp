@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CollegeApp.Models.Cvs.Award>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">الجوائز</strong>
+        </div>
+        <div class="card-body">
+            <p>
+                @Html.ActionLink(" اضافة", "Create", null, new { @class = CollegeApp.Resource.Resource.CreateStyle })
+            </p>
+            <br />
+            <table class="table table-bordered table-striped">
+                <tr>
+
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.AwardDate)
+                </th>*@
+                    <th style="text-align:center" class="col-9">
+                        @Html.DisplayNameFor(model => model.AwardDetail)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        @*<td>
+                        @Html.DisplayFor(modelItem => item.AwardDate)
+                    </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AwardDetail)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.ActionLink(CollegeApp.Resource.Resource.Edit, "Edit", new { id = item.AwardId }, new { @class = CollegeApp.Resource.Resource.EditStyle }) |
+                            @Html.ActionLink(CollegeApp.Resource.Resource.Delete, "Delete", new { id = item.AwardId }, new { @class = CollegeApp.Resource.Resource.DeleteStyle })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            <div>
+                @Html.ActionLink(CollegeApp.Resource.Resource.Back, "UserCv", "Users")
+            </div>
+        </div>
+    </div>
+</div>
+

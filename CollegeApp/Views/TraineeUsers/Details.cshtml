@@ -1,0 +1,138 @@
+﻿@model CollegeApp.Models.Account.TraineeUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TraineeUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.RoleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExperienceYears)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExperienceYears)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngilshLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngilshLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Addressline1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Addressline1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Addressline2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Addressline2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Addressline3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Addressline3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

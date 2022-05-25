@@ -1,0 +1,26 @@
+﻿@model CollegeApp.Models.ImprovementIndicator.InitiativeScope
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InitiativeScope</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InitiativeScopeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitiativeScopeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InitiativeScopeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

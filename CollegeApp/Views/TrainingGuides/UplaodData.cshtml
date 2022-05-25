@@ -1,0 +1,79 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = "Grades";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        @*<div class="card-header">
+                <strong class="card-title">المستخدمون و الصلاحيات</strong>
+            </div>*@
+        <div class="card-body">
+            <div style="text-align:center;">
+
+                @using (Html.BeginForm("UplaodData", "TrainingGuides", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    <div class="form-group">
+                        <label>قم باختيار نوع التدريب قبل تحميل الملف</label>
+
+                        <select id="selected" name="selected">
+                            @foreach (var item in ViewBag.getTrainingTypeList)
+                            {
+                                <option value="@item.ProgramTypeId">@item.ProgramTypeName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="dataFile" name="upload" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Upload" class="btn btn-default" />
+                    </div>
+
+                    if (Model != null)
+                    {
+                        <table border="1" width="100%" class="table table-bordered">
+                            <thead>
+                                <tr>
+
+
+                                   
+                                    <th>اسم المتدرب</th>
+                                    <th>رقم المتدرب</th>
+                                  
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+
+                                    foreach (DataRow row in Model.Rows)
+                                    {
+
+                                        <tr>
+                                           
+                                            <td>@row[7]</td>
+                                            <td>@row[8]</td>
+                                          
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

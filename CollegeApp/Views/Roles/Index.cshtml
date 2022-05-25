@@ -1,0 +1,349 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Scripts{
+    <script>
+
+        function Search(pageNum) {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/Roles/Search",
+                data: JSON.stringify({ "pageNum": pageNum, "word": $("#txtSearch").val() }),
+                dataType: "json",
+                success: function (result) {
+                    var rows = "";
+                    var RowsCount = (pageNum - 1) * 10;
+                    $.each(result, function (key, value) {
+                        rows += "<tr>";
+                        rows += "<td>" + (RowsCount + key + 1) + "</td>";
+                        rows += "<td>" + value.RoleName + "</td>";
+                        rows += "<td><button class='btn btn-danger' onclick='Delete(" + value.RoleId + ")'><i class='fa fa-trash'> حـذف</i></button> <button class='btn btn-success' onclick='Edit(" + value.RoleId + ")'><i class='fa fa-edit'> تعديل</i></button></td>";
+                        rows += "</tr>";
+                    });
+
+                    if (rows === "") {
+                        rows = '<tr><td colspan="5" style="color:red;">لا يوجد بيانات مطابقة للبحث</td></tr>';
+                        $("#resultSearch").empty();
+                        $("#resultSearch").append(rows);
+                    }
+                    else {
+
+
+
+                      
+
+                        $("#resultSearch").empty();
+                        $("#resultSearch").append(rows);
+                    }
+                },
+
+                error: function (result) {
+
+                }
+
+
+            });
+        }
+        GetViews();
+        ListCheckedIds = [];
+        function GetViews() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                url: "/Roles/GetViews",
+                data: JSON.stringify(),
+                dataType: "json",
+                success: function (result) {
+                    var rows = "";
+                    var RowsCount = 1;
+                    $.each(result, function (key, value) {
+                        rows += "<tr>";
+                        rows += "<td>" + RowsCount + "</td>";
+                        rows += "<td>" + value.UserViewName + "</td>";
+                        if (jQuery.inArray(value.UserViewId, ListCheckedIds) > -1) {
+                            rows += "<td><input type='checkbox' id='chk" + value.UserViewId + "' value='" + value.UserViewId + "' checked /></td>";
+
+                        } else {
+                            rows += "<td><input type='checkbox' id='chk" + value.UserViewId + "' value='" + value.UserViewId + "'/></td>";
+
+                        }
+
+                        rows += "</tr>";
+                        RowsCount++;
+                    });
+
+                    if (rows === "") {
+                        rows = '<tr><td colspan="5" style="color:red;">لا يوجد بيانات مطابقة للبحث</td></tr>';
+                        $("#resultViews").empty();
+                        $("#resultViews").append(rows);
+                    }
+                    else {
+
+
+
+                        
+                        $("#resultViews").empty();
+                        $("#resultViews").append(rows);
+                    }
+                },
+
+                error: function (result) {
+
+                }
+
+
+            });
+        }
+
+
+        function ClearForm() {
+            $("#txtRoleId").val('0');
+            $("#txtRoleName").val('');
+            ListCheckedIds = [];
+            GetViews();
+        }
+
+        function Create() {
+            var ViewIds = $("#resultViews input:checkbox:checked").map(function () {
+                return $(this).attr("value");
+            }).get();
+            
+            if (ViewIds.length == 0) {
+                swal({
+                    type: 'info',
+                    title: "الرجاء اختيار صفحة واحده على الاقل",
+                    showConfirmation: true,
+                    icon: "info",
+                    button: "اغلاق"
+                }
+                
+                );
+                return;
+            }
+
+            var Role = {
+                RoleId: $("#txtRoleId").val(),
+                RoleName: $("#txtRoleName").val(),
+                UserViewIds: ViewIds
+            };
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/Roles/Create",
+                data: JSON.stringify(Role),
+                dataType: "json",
+                success: function (result) {
+                    if (result == "Done") {
+                        swal({
+                            type: 'success',
+                            title: "تم حفظ البيانات بنجاح",
+                            showConfirmation: true,
+                            icon: "success",
+                            button: "اغلاق"
+                        }
+
+                        );
+                        ClearForm();
+                        Search(1);
+                    }
+                    else {
+                        swal({
+                            type: 'error',
+                            title: "لم يتم حفظ البيانات بنجاح",
+                            showConfirmation: true,
+                            icon: "error",
+                            button: "اغلاق"
+                        }
+
+                        );
+                    }
+                },
+                error: function (result) {
+                    swal({
+                        type: 'error',
+                        title: "يوجد خطا",
+                        showConfirmation: true
+                    }
+
+                    );
+                }
+
+
+            });
+        }
+
+        function Edit(Id) {
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/Roles/GetRoleById",
+                data: JSON.stringify({"Id":Id}),
+                dataType: "json",
+                success: function (result) {
+                    $("#txtRoleName").val(result.RoleName);
+                    $("#txtRoleId").val(result.RoleId);
+                    ListCheckedIds = result.UserViewIds;
+                    GetViews();
+                    GoToScroll('TopDiv');
+                },
+
+                error: function (result) {
+
+                }
+
+
+            });
+
+
+        }
+
+        function Delete(Id) {
+            swal({
+                title: "هل انت متاكد?",
+                text: "هل تريد بالفعل حذف صلاحية المستخدم!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ["لا", "نعم!"],
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        //////////////
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json;charset=utf-8",
+                            url: "/Roles/Delete",
+                            data: JSON.stringify({ "Id": Id }),
+                            dataType: "json",
+                            success: function (result) {
+                                if (result == "Done") {
+                                    swal("تم حذف الصلاحية بنجاح", {
+                                        icon: "success",
+                                    });
+                                    Search(1);
+                                }
+                                else {
+
+                                }
+                            },
+
+                            error: function (result) {
+
+                            }
+
+
+                        });
+
+                        //////////////
+
+                    } else {
+                        swal("لم يتم حذف السجل!");
+                    }
+                });
+        }
+
+    </script>
+    }
+<div class="col-md-12" id="TopDiv">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">الصلاحيات</strong>
+        </div>
+        <div class="card-body">
+            <div style="text-align:center;">
+                <input id="txtRoleId" type="hidden" value="0" />
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>اسم الصلاحية</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtRoleName" class="form-control" type="text" placeholder="اسم الصلاحية" />
+                    </div>
+
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        الصفحات
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table table-striped">
+                            <thead class="">
+                                <tr>
+                                    <th>  الرقم  </th>
+                                    <th>  اسم الصفحة  </th>
+                                    <th>تمكين</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultViews">
+                            </tbody>
+                        </table>
+                        <center>
+                            <nav aria-label="Page navigation example" style="display:none" id="Grid_Paging">
+                                <ul class="pagination" id="pagination"></ul>
+                            </nav>
+                        </center>
+                    </div>
+
+
+                </div>
+                <br /><br />
+                <button class="btn btn-success btn-group-lg col-sm-2" onclick="Create()" id="btnSave"><span class="fa fa-save"></span><strong> إضافة</strong></button>
+                <br /><br />
+                <div class="row" style="text-align:right">
+                    <div class="col-sm-2">
+                        <strong>
+                            بحث
+                        </strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtSearch" class="form-control" type="text" placeholder="بحث" />
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary btn-group-lg col-sm-3" onclick="Search(1)" id="btnSearch"><span class="fa fa-search"></span><strong> بحث</strong></button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="card">
+        @*<div class="card-header">
+                <strong class="card-title">المستخدمون و الصلاحيات</strong>
+            </div>*@
+        <div class="card-body">
+            <div style="text-align:center;">
+
+                <table class="table table-striped">
+                    <thead class="">
+                        <tr>
+                            <th>  الرقم  </th>
+                            <th>  اسم الصلاحية  </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultSearch">
+                    </tbody>
+                </table>
+              
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

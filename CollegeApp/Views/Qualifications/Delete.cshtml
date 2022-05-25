@@ -1,0 +1,71 @@
+﻿@model CollegeApp.Models.Cvs.Qualification
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">المؤهلات</strong>
+        </div>
+        <div class="card-body">
+
+            <h3>هل انت متاكد من حذف هذا السجل ؟</h3>
+            <div>
+                <hr />
+
+                <dl class="dl-horizontal">
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Degree)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Degree)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.institute)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.institute)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.year)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.year)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.major)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.major)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="حذف" class="btn btn-default" /> |
+                @Html.ActionLink("رجوع لصفحة السابقة", "Index")
+            </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

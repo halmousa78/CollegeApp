@@ -1,0 +1,54 @@
+﻿@model CollegeApp.Models.Cvs.Award
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">المقررات التدريبية</strong>
+        </div>
+        <div class="card-body">
+            <h2>Details</h2>
+
+            <div>
+                <h4>Award</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.User.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.User.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AwardDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AwardDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AwardDetail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AwardDetail)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.AwardId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+
+        </div>
+    </div>
+</div>
+

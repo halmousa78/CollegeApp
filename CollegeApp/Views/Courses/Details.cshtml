@@ -1,0 +1,60 @@
+﻿@model CollegeApp.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-md-12">
+    <div class="card">
+        @*<div class="card-header">
+                <strong class="card-title">المستخدمون و الصلاحيات</strong>
+            </div>*@
+        <div class="card-body">
+            <h2>Details</h2>
+
+            <div>
+                <h4>Course</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Major.MajorName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Major.MajorName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CourseName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CourseName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Prerequisites)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Prerequisites)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CourseStatus)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CourseStatus)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿@model CollegeApp.Models.plan.Initiative
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Initiative</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Standard.StandardName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Standard.StandardName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitiativeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitiativeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionRequirements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionRequirements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponsibleEntity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponsibleEntity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupportingEntity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupportingEntity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AchievementStandard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AchievementStandard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitiativeStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitiativeStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InitiativeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

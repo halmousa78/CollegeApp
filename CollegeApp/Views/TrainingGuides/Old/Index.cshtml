@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CollegeApp.Models.TrainingGuide.TrainingGuide>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">الارشاد التدريبي</strong>
+        </div>
+        <div class="card-body">
+
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Major.MajorName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProgramType.ProgramTypeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Term.TermName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TraineeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TraineeNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiscussingTheTrainingPlan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ReasonsForFailureInTraining)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Notes)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Major.MajorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProgramType.ProgramTypeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Term.TermName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TraineeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TraineeNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiscussingTheTrainingPlan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReasonsForFailureInTraining)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TrainingGuideId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TrainingGuideId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TrainingGuideId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+
+        </div>
+    </div>
+</div>

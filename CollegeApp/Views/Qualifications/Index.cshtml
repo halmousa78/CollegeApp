@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CollegeApp.Models.Cvs.Qualification>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">المؤهلات</strong>
+        </div>
+        <div class="card-body">
+            <p>
+                @Html.ActionLink(" اضافة", "Create", null, new { @class = CollegeApp.Resource.Resource.CreateStyle })
+            </p>
+            <br />
+            <table class="table table-bordered table-striped">
+                <tr style="text-align:center">
+
+                    <th class="col-1">
+                        @Html.DisplayNameFor(model => model.Degree)
+                    </th>
+                    <th class="col-5">
+                        @Html.DisplayNameFor(model => model.institute)
+                    </th>
+                    <th class="col-1">
+                        @Html.DisplayNameFor(model => model.year)
+                    </th>
+                    <th class="col-2">
+                        @Html.DisplayNameFor(model => model.major)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Degree)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.institute)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.year)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.major)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.ActionLink(" تعديل", "Edit", new { id = item.QualificationId }, new { @class = "btn btn-outline-primary fa fa-edit" }) |
+                            @Html.ActionLink(" حذف", "Delete", new { id = item.QualificationId }, new { @class = "btn btn-outline-danger fas fa-trash-alt" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <div>
+                @Html.ActionLink(CollegeApp.Resource.Resource.Back, "UserCv", "Users")
+            </div>
+        </div>
+    </div>
+</div>

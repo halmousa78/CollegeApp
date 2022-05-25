@@ -1,0 +1,284 @@
+﻿@model IEnumerable<CollegeApp.Models.PlansStudy>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">الخطة التدريبية</strong>
+        </div>
+        <div class="card-body">
+            <div style="text-align:center;">
+             
+                <div class="table-responsive table--no-card m-b-30">
+                    <table class="table table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Term.TermName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CourseId)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CourseDescription)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Topics)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.References)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Recommended)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week1)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek1)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week2)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek2)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week3)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek3)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week4)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek4)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week5)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek5)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week6)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek6)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week7)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek7)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week8)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek8)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week9)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek9)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week10)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek10)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week11)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek11)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week12)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek12)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week13)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek13)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week14)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek14)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week15)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek15)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Week16)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GradeWeek16)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PlansStudyStatus)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Term.TermName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CourseId)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CourseDescription)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Topics)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.References)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Recommended)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week3)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek3)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week4)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek4)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week5)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek5)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week6)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek6)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week7)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek7)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week8)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek8)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week9)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek9)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week10)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek10)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week11)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek11)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week12)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek12)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week13)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek13)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week14)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek14)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week15)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek15)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Week16)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GradeWeek16)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PlansStudyStatus)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.PlansStudyId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.PlansStudyId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.PlansStudyId })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        
+
+
+                    </table>
+                </div>
+                    
+
+
+                </div>
+
+            </div>
+    </div>
+</div>
+

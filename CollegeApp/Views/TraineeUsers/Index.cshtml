@@ -1,0 +1,117 @@
+﻿@model IEnumerable<CollegeApp.Models.Account.TraineeUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role.RoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserMobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExperienceYears)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngilshLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Addressline1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Addressline2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Addressline3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentName.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserMobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExperienceYears)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngilshLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Addressline1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Addressline2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Addressline3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>

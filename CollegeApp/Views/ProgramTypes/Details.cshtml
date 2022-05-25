@@ -1,0 +1,26 @@
+﻿@model CollegeApp.Models.ProgramType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProgramType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProgramTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

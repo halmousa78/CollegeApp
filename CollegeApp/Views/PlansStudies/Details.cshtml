@@ -1,0 +1,346 @@
+﻿@model CollegeApp.Models.PlansStudy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlansStudy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Term.TermName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term.TermName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsersCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsersCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.References)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.References)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recommended)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recommended)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week8)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week8)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek8)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek8)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week9)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week9)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek9)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek9)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week10)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week10)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek10)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek10)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week11)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week11)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek11)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek11)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week12)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week12)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek12)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek12)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week13)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week13)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek13)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek13)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week14)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week14)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek14)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek14)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week15)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week15)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek15)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek15)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Week16)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Week16)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeWeek16)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeWeek16)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlansStudyStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlansStudyStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlansStudyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

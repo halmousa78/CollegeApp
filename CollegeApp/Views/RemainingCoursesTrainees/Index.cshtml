@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CollegeApp.Models.TrainingGuide.RemainingCoursesTrainee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="/RemainingCoursesTrainees/Index" method="post">
+    <input type="text" name="TraineeUserId" value="" />
+    <input type="submit" name="name" value="بحث" />
+
+</form>
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MajorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GPA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MajorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TraineeUserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TraineeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GPA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RemainingCoursesTraineeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RemainingCoursesTraineeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RemainingCoursesTraineeId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+

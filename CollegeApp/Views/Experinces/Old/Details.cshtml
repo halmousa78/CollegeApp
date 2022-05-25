@@ -1,0 +1,78 @@
+﻿@model CollegeApp.Models.Cvs.Experince
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">المقررات التدريبية</strong>
+        </div>
+        <div class="card-body">
+            <h2>Details</h2>
+
+            <div>
+                <h4>Experince</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.User.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.User.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.JobTitle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.JobTitle)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CompanyName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StartDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EndDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ExperinceDetail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ExperinceDetail)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ExperinceId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+
+        </div>
+    </div>
+</div>
+

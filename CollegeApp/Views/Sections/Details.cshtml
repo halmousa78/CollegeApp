@@ -1,0 +1,58 @@
+﻿@model CollegeApp.Models.Section
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Section</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramType.ProgramTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramType.ProgramTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Term.TermName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term.TermName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Completed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainerName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SectionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

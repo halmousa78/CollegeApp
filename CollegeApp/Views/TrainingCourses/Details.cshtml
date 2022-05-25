@@ -1,0 +1,70 @@
+﻿@model CollegeApp.Models.Cvs.TrainingCourse
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">تفاصيل الدورة التدريبية</strong>
+        </div>
+        <div class="card-body">
+            <h2>Details</h2>
+
+            <div>
+                <h4>TrainingCourse</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.User.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.User.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InstitutionName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.InstitutionName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StartDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EndDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TrainingCourseDetail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TrainingCourseDetail)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.TrainingCourseId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+
+        </div>
+    </div>
+</div>
+

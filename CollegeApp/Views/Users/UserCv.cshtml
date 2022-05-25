@@ -1,0 +1,286 @@
+﻿@model CollegeApp.Models.User
+@{
+    ViewBag.Title = "UserCv";
+}
+@section CssScript{
+
+    <link href="~/Content/Cvs/Style.css" rel="stylesheet" />
+}
+<page size="A4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title title fa fa-address-book"> البيانات الشخصية</strong>
+                <a href="/Users/UserUpdate" class="au-btn au-btn-icon au-btn--blue zmdi zmdi-plus " style="float:left"> تعديل</a>
+            </div>
+            <div class="card-body">
+                <img src="@Url.Content(Session["UserImage"].ToString())" alt="None" id="Image" style="float:left" width="200" height="200"/>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>الاسم</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.UserName
+                    </div>
+                    <div class="col-sm-2">
+                        <strong>
+                            البريد الالكتروني
+                        </strong>
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.UserEmail
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>الجوال</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.UserMobile
+                    </div>
+                    <div class="col-sm-2">
+                        <strong>
+                            القسم
+                        </strong>
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.Department.DepartmentName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>مستوى اللغة الانجليزية</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.EngilshLevel
+                    </div>
+                    <div class="col-sm-2">
+                        <strong>عدد سنوات الخدمة</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.ExperienceYears
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>العنوان</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        @ViewBag.UserInfo.Addressline1 <br />
+                        @ViewBag.UserInfo.Addressline2 <br />
+                        @ViewBag.UserInfo.Addressline3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title title fas fa-certificate" id="Qualifications"> المؤهلات</strong>
+                <a href="/Qualifications/index" class="au-btn au-btn-icon au-btn--blue zmdi zmdi-plus" style="float:left"> تعديل او اضافة</a>
+
+            </div>
+            <div class="card-body">
+                @foreach (var item in ViewBag.Qualifications)
+                {
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <strong>الدرجة العلمية</strong>
+                        </div>
+                        <div class="col-sm-4">
+                            @item.Degree
+                        </div>
+                        <div class="col-sm-2">
+                            <strong>
+                                الجامعة او الكلية او المعهد
+                            </strong>
+                        </div>
+                        <div class="col-sm-4">
+                            @item.institute
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <strong>سنة التخرج</strong>
+
+                        </div>
+                        <div class="col-sm-4">
+                            @item.year
+                        </div>
+                        <div class="col-sm-2">
+                            <strong>
+                                التخصص
+                            </strong>
+                        </div>
+                        <div class="col-sm-4">
+                            @item.major
+                        </div>
+                    </div>
+                    <br />
+                }
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title title fas fa-briefcase"> الخبرات</strong>
+                <a href="/Experinces/index" class="au-btn au-btn-icon au-btn--blue zmdi zmdi-plus" style="float:left"> تعديل او اضافة</a>
+
+            </div>
+            <div class="card-body">
+                @{int count1 = 1; }
+                @foreach (var item in ViewBag.Experinces)
+                {
+                    @*<div class="row">
+                        <div class="col-sm-2">
+                            <strong>الوظيفة</strong>
+
+                        </div>
+                        <div class="col-sm-4">
+                            @item.JobTitle
+                        </div>
+                        <div class="col-sm-2">
+                            <strong>
+                                مكان العمل
+                            </strong>
+                        </div>
+                        <div class="col-sm-4">
+                            @item.CompanyName
+                        </div>
+                    </div>*@
+                    @*<div class="row">
+                        <div class="col-sm-2">
+                            <strong>تاريخ بداية العمل</strong>
+
+                        </div>
+                        <div class="col-sm-4">
+                            @item.StartDate
+                        </div>
+                        <div class="col-sm-2">
+                            <strong>
+                                تاريخ انتهاء العمل
+                            </strong>
+                        </div>
+                        <div class="col-sm-4">
+                            @item.EndDate
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        @*<div class="col-sm-1">
+                            <strong>@count1</strong>
+
+                        </div>*@
+                        <div class="col-sm-10">
+                            @item.ExperinceDetail
+                        </div>
+
+                    </div>
+                    <br />
+                    count1++;
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title title fas fa-book"> الدورات</strong>
+                <a href="/TrainingCourses/index" class="au-btn au-btn-icon au-btn--blue zmdi zmdi-plus" style="float:left"> تعديل او اضافة</a>
+
+            </div>
+            <div class="card-body">
+                @{int count2 = 1; }
+
+                @foreach (var item in ViewBag.TrainingCourses)
+                {
+                    @*<div class="row">
+                        <div class="col-sm-2">
+                            <strong>اسم المعهد</strong>
+
+                        </div>
+                        <div class="col-sm-4">
+                            @item.InstitutionName
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <strong>تاريخ بداية الدورة</strong>
+
+                        </div>
+                        <div class="col-sm-4">
+                            @item.StartDate
+                        </div>
+                        <div class="col-sm-2">
+                            <strong>
+                                تاريخ انتهاء الدورة
+                            </strong>
+                        </div>
+                        <div class="col-sm-4">
+                            @item.EndDate
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        @*<div class="col-sm-1">
+                            <strong>@count2</strong>
+
+                        </div>*@
+                        <div class="col-sm-4">
+                            @item.TrainingCourseDetail
+                        </div>
+
+                    </div>
+                    <br />
+                    count2++;
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title title "><i class="fas fa-trophy"></i> الجوائز</strong>
+                <a href="/Awards/index" class="au-btn au-btn-icon au-btn--blue zmdi zmdi-plus" style="float:left"> تعديل او اضافة</a>
+
+            </div>
+            <div class="card-body">
+                @{int count3 = 1; }
+                @foreach (var item in ViewBag.Awards)
+                {
+                    <div class="row">
+                        @*<div class="col-sm-2">
+                    <strong>تاريخ الجائزة</strong>
+
+                </div>
+                <div class="col-sm-4">
+                    @item.AwardDate
+                </div>*@
+                        @*<div class="col-sm-1">
+                            <strong>@count3</strong>
+
+                        </div>*@
+                        <div class="col-sm-4">
+                            @item.AwardDetail
+                        </div>
+                    </div>
+
+                    <br />
+                    count3++;
+                }
+            </div>
+        </div>
+    </div>
+</page>

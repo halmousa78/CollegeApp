@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CollegeApp.Models.ImprovementIndicator.ImprovementIndicatorSubject>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImprovementIndicatorSubjectName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImprovementIndicatorSubjectName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ImprovementIndicatorSubjectId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ImprovementIndicatorSubjectId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ImprovementIndicatorSubjectId })
+        </td>
+    </tr>
+}
+
+</table>

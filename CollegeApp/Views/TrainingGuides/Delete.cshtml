@@ -1,0 +1,112 @@
+﻿@model CollegeApp.Models.TrainingGuide.TrainingGuide
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TrainingGuide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Major.MajorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Major.MajorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramType.ProgramTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramType.ProgramTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Term.TermName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term.TermName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationOfCoursesAccordingToTheTrainingPlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationOfCoursesAccordingToTheTrainingPlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExplanationOfTheTrainingPlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExplanationOfTheTrainingPlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingAverageLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingAverageLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

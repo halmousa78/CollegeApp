@@ -1,0 +1,420 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            $('input[type=radio][name=name]').change(function () {
+                $("#txtSearch").val(this.value);
+                if (this.value == 'رئيس') {
+                    Search(1);
+                }
+                else if (this.value == 'مشرف') {
+                    Search(1);
+                }
+                $("#txtSearch").val("");
+            });
+            
+           
+        });
+
+        Search(1);
+
+        function ClearForm() {
+            $("#txtId").val('0');
+            $("#txtUserName").val('');
+            $("#txtPassword").val('');
+            $("#txtEmail").val('');
+            $("#txtMobile").val('');
+            $("#SelRole").val('0');
+            $(".MySelect").select2("destroy");
+            $(".MySelect").select2();
+        }
+
+        function Create() {
+
+            var user = {
+                UserId: $("#txtId").val(),
+                UserName: $("#txtUserName").val(),
+                UserPassword: $("#txtPassword").val(),
+                UserEmail: $("#txtEmail").val(),
+                UserMobile: $("#txtMobile").val(),
+                RoleId: $("#SelRole").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/Users/create",
+                data: JSON.stringify(user),
+                dataType: "json",
+                success: function (result) {
+                    if (result == "Done") {
+                        swal({
+                            type: 'success',
+                            title: "تم حفظ البيانات بنجاح",
+                            showConfirmation: true,
+                            icon: "success",
+                            button: "اغلاق"
+                        }
+
+                        );
+                        ClearForm();
+                        Search(1);
+                    }
+                    else {
+                        swal({
+                            type: 'error',
+                            title: "لم يتم حفظ البيانات بنجاح",
+                            showConfirmation: true,
+                            icon: "error",
+                            button: "اغلاق"
+                        }
+
+                        );
+                    }
+                },
+                error: function (result) {
+                    swal({
+                        type: 'error',
+                        title: "يوجد خطا",
+                        showConfirmation: true
+                    }
+
+                    );
+                }
+
+
+            });
+        }
+
+        function Search(pageNum) {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/Users/Search",
+                data: JSON.stringify({ "pageNum": pageNum,"word": $("#txtSearch").val() }),
+                dataType: "json",
+                success: function (result) {
+                    var rows = "";
+                    var RowsCount = (pageNum-1)*10;
+                    $.each(result, function (key, value) {
+                        rows += "<tr>";
+                        rows += "<td>" + (RowsCount+key+1) + "</td>";
+                        rows += "<td>" + value.UserName + "</td>";
+                        rows += "<td>" + value.UserEmail + "</td>";
+                        rows += "<td>" + value.UserMobile + "</td>";
+                        rows += "<td>" + value.RoleName + "</td>";
+                        rows += "<td><button class='btn btn-danger' onclick='Delete(" + value.UserId + ")'><i class='fa fa-trash'> حـذف</i></button> <button class='btn btn-success' onclick='Edit(" + value.UserId + ")'><i class='fa fa-edit'> تعديل</i></button></td>";
+                        rows += "</tr>";
+                    });
+
+                    if (rows === "") {
+                        rows = '<tr><td colspan="5" style="color:red;">لا يوجد بيانات مطابقة للبحث</td></tr>';
+                        $('#Grid_Paging').hide();
+                        $("#resultSearch").empty();
+                        $("#resultSearch").append(rows);
+                        DrawPaging(result.TotalRows);
+                    }
+                    else {
+                        $('#Grid_Paging').show();
+
+
+
+                        var ResultCount = result[0].TotalRows;
+                        DrawPaging(ResultCount);
+                        var pageStyle = "#Num_" + pageNum;
+                        $(pageStyle).addClass('active');
+
+                        $("#resultSearch").empty();
+                        $("#resultSearch").append(rows);
+                    }
+                },
+             
+                error: function (result) {
+                   
+                }
+
+
+            });
+        }
+
+        function DrawPaging(count) {
+            $('#pagination').empty();
+            var PageSelected = parseInt(sessionStorage["pageNumSelected"]);
+            var pagesize = 10;
+            var TotalPage = Math.ceil(count / pagesize);
+            var Total_pages_div = ' ';
+            Total_pages_div += '  <li class="page-item" style="cursor:pointer"><a class="page-link" onclick="Search (' + 1 + ')">الاولى</a></li>';
+            if (PageSelected != 1) {
+                Total_pages_div += '  <li class="page-item" style="cursor:pointer"><a class="page-link" onclick="Search (' + (PageSelected - 1) + ')">السابق</a></li>';
+            }
+            if (TotalPage < 11) {
+                for (var i = 1; i < TotalPage + 1; i++) {
+                    Total_pages_div += ' <li class="page-item " id="Num_' + i + '" style="cursor:pointer" ><a class="page-link"  onclick="Search (' + i + ')">' + i + '</a></li>';
+                }
+            }
+            else {
+                if (PageSelected < 11) {
+                    for (var i = 1; i < 11; i++) {
+                        Total_pages_div += ' <li class="page-item " id="Num_' + i + '" style="cursor:pointer" ><a class="page-link"  onclick="Search (' + i + ')">' + i + '</a></li>';
+                    }
+                    Total_pages_div += ' <li class="page-item "   ><a class="page-link"  >.....</a></li>';
+                    Total_pages_div += ' <li class="page-item " id="Num_' + TotalPage + '" style="cursor:pointer" ><a class="page-link"  onclick="Search (' + TotalPage + ')">' + TotalPage + '</a></li>';
+                }
+                else {
+                    var PageSelectedString = PageSelected.toString();
+                    var PageSelectedLenght = PageSelectedString.length;
+                    var PageStart = '';
+                    if (PageSelectedLenght == 2) {
+                        var res = PageSelectedString.substring(0, 1);
+                        PageStart = res + "0";
+                    }
+                    else if (PageSelectedLenght == 3) {
+                        var res1 = PageSelectedString.substring(0, 2);
+                        PageStart = res1 + "0";
+                    }
+                    else if (PageSelectedLenght == 4) {
+                        var res2 = PageSelectedString.substring(0, 3);
+                        PageStart = res2 + "0";
+                    }
+                    var StartPagenum = parseInt(PageStart);
+                    for (var i = StartPagenum; i < (StartPagenum + 10); i++) {
+                        Total_pages_div += ' <li class="page-item " id="Num_' + i + '" style="cursor:pointer" ><a class="page-link"  onclick="Search (' + i + ')">' + i + '</a></li>';
+                        if (i == TotalPage) {
+                            break;
+                        }
+                    }
+                    Total_pages_div += ' <li class="page-item "   ><a class="page-link"  >.....</a></li>';
+                    Total_pages_div += ' <li class="page-item " id="Num_' + TotalPage + '" style="cursor:pointer" ><a class="page-link"  onclick="Search (' + TotalPage + ')">' + TotalPage + '</a></li>';
+                }
+
+            }
+
+            if (PageSelected != TotalPage) {
+                Total_pages_div += '  <li class="page-item" style="cursor:pointer"><a class="page-link" onclick="Search (' + (PageSelected + 1) + ')">التالي</a></li>';
+            }
+            Total_pages_div += '  <li class="page-item" style="cursor:pointer"><a class="page-link" onclick="Search (' + TotalPage + ')">الاخيرة</a></li>';
+
+            Total_pages_div += '';
+
+            $('#pagination').append(Total_pages_div);
+
+
+        }
+
+        function Delete(Id) {
+            swal({
+                title: "هل انت متاكد?",
+                text: "هل تريد بالفعل حذف سجل المستخدم!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ["لا", "نعم!"],
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        //////////////
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json;charset=utf-8",
+                            url: "/Users/Delete",
+                            data: JSON.stringify({ "Id": Id }),
+                            dataType: "json",
+                            success: function (result) {
+                                if (result == "Done") {
+                                    swal("تم حذف السجل بنجاح", {
+                                        icon: "success",
+                                    });
+                                    Search(1);
+                                }
+                                else {
+
+                                }
+                            },
+
+                            error: function (result) {
+
+                            }
+
+
+                        });
+
+                        //////////////
+                       
+                    } else {
+                        swal("لم يتم حذف السجل!");
+                    }
+                });
+        }
+
+        function Edit(Id) {
+           
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json;charset=utf-8",
+                            url: "/Users/GetUserById",
+                            data: JSON.stringify({ "Id": Id }),
+                            dataType: "json",
+                            success: function (result) {
+                                $("#txtId").val(result.UserId);
+                                $("#txtUserName").val(result.UserName);
+                                $("#txtPassword").val(result.UserPassword);
+                                $("#txtEmail").val(result.UserEmail);
+                                $("#txtMobile").val(result.UserMobile);
+                                $("#SelRole").val(result.RoleId);
+                                $(".MySelect").select2("destroy");
+                                $(".MySelect").select2();
+                                GoToScroll('TopDiv');
+                            },
+
+                            error: function (result) {
+
+                            }
+
+
+                        });
+
+                      
+        }
+
+    </script>
+    
+    }
+
+<div class="col-md-12" id="TopDiv">
+    <div class="card" >
+        <div class="card-header">
+            <strong class="card-title">المستخدمون و الصلاحيات</strong>
+        </div>
+        <div class="card-body">
+            <div style="text-align:center;">
+                <input id="txtId" type="hidden" value="0" />
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>اسم المستخدم</strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtUserName" class="form-control" type="text" placeholder="اسم المستخدم" />
+                    </div>
+                    <div class="col-sm-2">
+                        <strong>
+                            كلمة المرور
+                        </strong>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtPassword" class="form-control" type="password" placeholder="كلمة المرور" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>
+                            البريد الالكتروني
+                        </strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtEmail" class="form-control" type="email" placeholder="البريد الالكتروني" />
+                    </div>
+                    <div class="col-sm-2">
+                        <strong> رقم الجوال</strong>
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtMobile" class="form-control" type="text" placeholder="رقم الجوال" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>الصلاحية</strong>
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="">
+                            <select id="SelRole" class="form-control js-example-basic-single MySelect">
+                                <option value="0" selected>------ اختر الصلاحية ------</option>
+                                @foreach (var item in ViewBag.role)
+                                {
+                                    <option value="@item.RoleId">@item.RoleName</option>
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <br />
+                <button class="btn btn-success btn-group-lg col-sm-2" onclick="Create()" id="btnSave"><span class="fa fa-save"></span><strong> إضافة</strong></button>
+                <br /><br />
+                <div class="row" style="text-align:right">
+                    <div class="col-sm-2">
+                        <strong>
+                            بحث
+                        </strong>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="txtSearch" class="form-control" type="text" placeholder="بحث" />
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-primary btn-group-lg col-sm-3" onclick="Search(1)" id="btnSearch"><span class="fa fa-search"></span><strong> بحث</strong></button>
+                       
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="radio" name="name" value="رئيس" id="txtHead"/> <strong>روؤساء الاقسام</strong>
+                            &nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="name" value="مشرف" id="txtSupervisor"/> <strong>مشرفين التخصصات</strong>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="card">
+        @*<div class="card-header">
+            <strong class="card-title">المستخدمون و الصلاحيات</strong>
+        </div>*@
+        <div class="card-body">
+            <div style="text-align:center;">
+                
+                <table class="table table-striped">
+                    <thead class="" >
+                        <tr>
+                            <th>  الرقم  </th>
+                            <th>  الاسم  </th>
+                            <th>  البريد الالكتروني  </th>
+                            <th>  الجوال  </th>
+                            <th>  اسم الصلاحية  </th>
+                            <th>    </th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultSearch">
+
+                    </tbody>
+                </table>
+                <center>
+                    <nav aria-label="Page navigation example" style="display:none" id="Grid_Paging">
+                        <ul class="pagination" id="pagination"></ul>
+                    </nav>
+                </center>
+
+                
+
+                
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model CollegeApp.Models.Cvs.Award
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">المقررات التدريبية</strong>
+        </div>
+        <div class="card-body">
+            <h2>Edit</h2>
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Award</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.AwardId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AwardDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AwardDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.AwardDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AwardDetail, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AwardDetail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AwardDetail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                    @Html.LabelFor(model => model.UserId, "UserId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("UserId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="@CollegeApp.Resource.Resource.Save" class="@CollegeApp.Resource.Resource.SaveStyle" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink(CollegeApp.Resource.Resource.Back, "Index")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
