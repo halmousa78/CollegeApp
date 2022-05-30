@@ -693,6 +693,7 @@
     <Content Include="Doc\Data\رايات\1442\morning\SF24_lec_1442_semester1_morning_diploma.csv" />
     <Content Include="Doc\Data\رايات\1442\morning\SF24_lec_1442_semester2_morning_diploma.csv" />
     <Content Include="Doc\Data\نتائج.xlsx" />
+    <Content Include="Doc\Data\رايات\1442\الارشاد\sm01.csv" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

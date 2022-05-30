@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -48,9 +45,9 @@
                 @Html.DisplayFor(modelItem => item.TraineeNumber)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TrainingGuideId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.TrainingGuideId }) @*|
                 @Html.ActionLink("Details", "Details", new { id = item.TrainingGuideId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TrainingGuideId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.TrainingGuideId })*@
             </td>
         </tr>
     }

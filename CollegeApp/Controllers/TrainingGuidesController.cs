@@ -311,7 +311,7 @@ namespace CollegeApp.Models.TrainingGuide
 
                 db.Entry(getTrainingGuideIdData);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("TrainingGuideList");
             }
             ViewBag.MajorId = new SelectList(db.Majors, "MajorId", "MajorName", trainingGuide.MajorId);
             ViewBag.ProgramTypeId = new SelectList(db.ProgramTypes, "ProgramTypeId", "ProgramTypeName", trainingGuide.ProgramTypeId);
