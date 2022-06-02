@@ -168,7 +168,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="/Home/Index">
+                <a href="@(((CollegeApp.Models.ViewModel)Session["ViewPermission"]).ViewIds.Contains(1)==true?"/Home/Index":"/Home/MyIndex")">
                     <img src="/Content/MyStyle/images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>

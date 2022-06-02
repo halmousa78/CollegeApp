@@ -86,11 +86,10 @@ namespace CollegeApp.Controllers
 
                     }
                 }
-                else
-                {
-                    return RedirectToAction("Login", "Account");
-                }
+            
             }
+
+            TempData["message"] = "اسم المستخدم او كلمة المرور غير صحيحة";
 
             return View();
         }
@@ -136,6 +135,7 @@ namespace CollegeApp.Controllers
             }
 
             TempData["message"] = message;
+
             return RedirectToAction("Login");
         }
 

@@ -4,52 +4,63 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">اسماء المتدربين (الارشاد التدريبي)</strong>
+        </div>
+        <div class="card-body">
+            
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Major.MajorName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Term.TermName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TraineeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TraineeNumber)
+                    </th>
+                    <th></th>
+                </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Major.MajorName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Term.TermName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TraineeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TraineeNumber)
-        </th>
-        <th></th>
-    </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Major.MajorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Term.TermName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TraineeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TraineeNumber)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" تعديل", "Edit", new { id = item.TrainingGuideId },new { @class = "btn btn-success fa fa-edit" })@*|
+        @Html.ActionLink("Details", "Details", new { id = item.TrainingGuideId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.TrainingGuideId })*@
+                        </td>
+                    </tr>
+                }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Major.MajorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Term.TermName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TraineeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TraineeNumber)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TrainingGuideId }) @*|
-                @Html.ActionLink("Details", "Details", new { id = item.TrainingGuideId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TrainingGuideId })*@
-            </td>
-        </tr>
-    }
+            </table>   
 
-</table>
+           
+        </div>
+    </div>
+</div>
+

@@ -55,15 +55,16 @@
                         <div class="login-form">
                             @if (TempData["message"] != null)
                             {
-                                if (TempData["message"] != "البريد الالكتروني غير مسجل")
+                                if (TempData["message"] == "البريد الالكتروني غير مسجل" || TempData["message"] == "اسم المستخدم او كلمة المرور غير صحيحة")
                                 {
-                                    <div class="alert alert-success" role="alert">
+                                    <div class="alert alert-danger" role="alert">
                                         @TempData["message"]
                                     </div>
+                                    
                                 }
                                 else
                                 {
-                                    <div class="alert alert-danger" role="alert">
+                                    <div class="alert alert-success" role="alert">
                                         @TempData["message"]
                                     </div>
                                 }

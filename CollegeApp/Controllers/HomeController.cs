@@ -19,18 +19,24 @@ namespace CollegeApp.Controllers
             ViewBag.UserTotal = db.Users.Count();
             return View();
         }
+
+
         [ViewPermissionFilter(ViewId = 13)]
         public ActionResult MyIndex()
         {
-            var getTrainingGuides = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-            var getRole = Convert.ToInt32(Session["RoleId"].ToString());
-            var getUserRole = db.Users.Where(x => x.RoleId == getRole).Select(x => x.RoleId).FirstOrDefault();
-            var getUser = Session["UserName"].ToString();
-            var getUserId = db.Users.Where(x => x.UserName == getUser).Select(x => x.UserId).FirstOrDefault();
+            if (Session["UserName"] != null)
+            {
+                var getTrainingGuides = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                var getRole = Convert.ToInt32(Session["RoleId"].ToString());
+                var getUserRole = db.Users.Where(x => x.RoleId == getRole).Select(x => x.RoleId).FirstOrDefault();
+                var getUser = Session["UserName"].ToString();
+                var getUserId = db.Users.Where(x => x.UserName == getUser).Select(x => x.UserId).FirstOrDefault();
 
-            ViewBag.UserTotal = db.Users.Count();
-            ViewBag.TrainingGuidesTotal = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).Count();
-            ViewBag.TrainingGuidesCompletedTotal = db.TrainingGuides.Where(x=>x.ExplanationOfTheTrainingPlan == true && x.RegistrationOfCoursesAccordingToTheTrainingPlan==true && x.TrainingLevel == true && x.TrainingAverageLevel).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).Count();
+                ViewBag.UserTotal = db.Users.Count();
+                ViewBag.TrainingGuidesTotal = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).Count();
+                ViewBag.TrainingGuidesCompletedTotal = db.TrainingGuides.Where(x => x.ExplanationOfTheTrainingPlan == true && x.RegistrationOfCoursesAccordingToTheTrainingPlan == true && x.TrainingLevel == true && x.TrainingAverageLevel).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).Count();
+            }
+            
 
             return View();
         }

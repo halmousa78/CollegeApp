@@ -36,8 +36,8 @@ namespace CollegeApp.Controllers
 
                 if (getDepartmentId == 1)
                 {
-                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).Select(x => x.MajorName).ToList();
-                    SelectList majorSelectList = new SelectList(majorList);
+                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).ToList();
+                    SelectList majorSelectList = new SelectList(majorList, "MajorId", "MajorName");
                     ViewBag.majorSelectList = majorSelectList;
 
                     var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.DepartmentId == 1 || x.Major.DepartmentId == 1).OrderBy(x => x.level);
@@ -45,8 +45,8 @@ namespace CollegeApp.Controllers
                 }
                 else if (getDepartmentId == 2)
                 {
-                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).Select(x => x.MajorName).ToList();
-                    SelectList majorSelectList = new SelectList(majorList);
+                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).ToList();
+                    SelectList majorSelectList = new SelectList(majorList, "MajorId", "MajorName");
                     ViewBag.majorSelectList = majorSelectList;
 
                     //var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.DepartmentId == 2 || x.Major.DepartmentId == 1).OrderBy(x => x.level);
@@ -55,8 +55,8 @@ namespace CollegeApp.Controllers
                 }
                 else if (getDepartmentId == 3)
                 {
-                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).Select(x => x.MajorName).ToList();
-                    SelectList majorSelectList = new SelectList(majorList);
+                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).ToList();
+                    SelectList majorSelectList = new SelectList(majorList, "MajorId", "MajorName");
                     ViewBag.majorSelectList = majorSelectList;
 
                     var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.DepartmentId == 3 || x.Major.DepartmentId == 1).OrderBy(x => x.level);
@@ -64,8 +64,8 @@ namespace CollegeApp.Controllers
                 }
                 else if (getDepartmentId == 4)
                 {
-                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).Select(x => x.MajorName).ToList();
-                    SelectList majorSelectList = new SelectList(majorList);
+                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).ToList();
+                    SelectList majorSelectList = new SelectList(majorList, "MajorId", "MajorName");
                     ViewBag.majorSelectList = majorSelectList;
 
                     var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.DepartmentId == 4 || x.Major.DepartmentId == 1).OrderBy(x => x.level);
@@ -73,8 +73,8 @@ namespace CollegeApp.Controllers
                 }
                 else if (getDepartmentId == 5)
                 {
-                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).Select(x => x.MajorName).ToList();
-                    SelectList majorSelectList = new SelectList(majorList);
+                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).ToList();
+                    SelectList majorSelectList = new SelectList(majorList, "MajorId", "MajorName");
                     ViewBag.majorSelectList = majorSelectList;
 
                     var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.DepartmentId == 5 || x.Major.DepartmentId == 1).OrderBy(x => x.level);
@@ -82,8 +82,8 @@ namespace CollegeApp.Controllers
                 }
                 else
                 {
-                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).Select(x => x.MajorName).ToList();
-                    SelectList majorSelectList = new SelectList(majorList);
+                    var majorList = db.Majors.Where(x => x.MajorStatus == true & x.DepartmentId == getDepartmentId).ToList();
+                    SelectList majorSelectList = new SelectList(majorList, "MajorId", "MajorName");
                     ViewBag.majorSelectList = majorSelectList;
 
                     var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.DepartmentId == 6 || x.Major.DepartmentId == 1).OrderBy(x => x.level);
@@ -100,11 +100,17 @@ namespace CollegeApp.Controllers
         }
 
         [ViewPermissionFilter(ViewId = 13)]
-        public ActionResult GetCourses(string MajorName)
+        public ActionResult GetCourses(int MajorName)
         {
-            var courses = db.Courses.Include(c => c.Major).Where(x => x.Major.MajorName == MajorName || x.MajorId == 1).OrderBy(x => x.level).ToList();
+            //4-5-6-7 - 9-10-11-12  15-16
+            if (MajorName == 4 || MajorName == 5 || MajorName == 6 || MajorName == 7)
+            {
+                var courses = db.Courses.Include(c => c.Major).Where(x => (x.Major.MajorId == MajorName || x.MajorId == 1) && x.Major.TrainingTypeId == 1).OrderBy(x => x.level).ToList();
+                return PartialView("_GetCoursesListView", courses);
 
-            return PartialView("_GetCoursesListView", courses);
+            }
+
+            return View();
         }
 
         // GET: Courses/Details/5

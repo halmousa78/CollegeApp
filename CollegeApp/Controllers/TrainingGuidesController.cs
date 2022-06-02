@@ -137,13 +137,19 @@ namespace CollegeApp.Models.TrainingGuide
 
         public ActionResult TrainingGuideList()
         {
-            var getTrainingGuides = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-            var getRole = Convert.ToInt32(Session["RoleId"].ToString());
-            var getUserRole = db.Users.Where(x => x.RoleId == getRole).Select(x => x.RoleId).FirstOrDefault();
-            var getUser = Session["UserName"].ToString();
-            var getUserId = db.Users.Where(x => x.UserName == getUser).Select(x => x.UserId).FirstOrDefault();
+            if (Session["UserName"] != null)
+            {
+                var getTrainingGuides = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                var getRole = Convert.ToInt32(Session["RoleId"].ToString());
+                var getUserRole = db.Users.Where(x => x.RoleId == getRole).Select(x => x.RoleId).FirstOrDefault();
+                var getUser = Session["UserName"].ToString();
+                var getUserId = db.Users.Where(x => x.UserName == getUser).Select(x => x.UserId).FirstOrDefault();
 
-            return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList());
+                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList());
+            }
+
+            return View();
+            
         }
 
         public ActionResult UplaodData()
