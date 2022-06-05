@@ -21,114 +21,122 @@ namespace CollegeApp.Models.TrainingGuide
         // GET: TrainingGuides
         public ActionResult Index()
         {
-            var getTrainingGuides = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-            var getRole = Convert.ToInt32(Session["RoleId"].ToString());
-            var getUserRole = db.Users.Where(x => x.RoleId == getRole).Select(x => x.RoleId).FirstOrDefault();
-            var getUser = Session["UserName"].ToString();
-            var getUserId = db.Users.Where(x => x.UserName == getUser).Select(x => x.UserId).FirstOrDefault();
+            if (Session["UserName"] != null)
+            {
+                var getTrainingGuides = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                var getRole = Convert.ToInt32(Session["RoleId"].ToString());
+                var getUserRole = db.Users.Where(x => x.RoleId == getRole).Select(x => x.RoleId).FirstOrDefault();
+                var getUser = Session["UserName"].ToString();
+                var getUserId = db.Users.Where(x => x.UserName == getUser).Select(x => x.UserId).FirstOrDefault();
 
-            // مدير النظام و العميد و الوكلاء
-            if (getUserRole == 1 || getUserRole == 2 || getUserRole == 3 || getUserRole == 4 || getUserRole == 5)
-            {
-                //ViewBag.Data = getTrainingGuides;
-                return View(getTrainingGuides);
-            }
-            //رؤوساء الاقسام
-            //رئيس قسم الدرسات العامة
-            else if (getUserRole == 6)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
-            }
-            //رئيس قسم تقنية الحاسب
-            else if (getUserRole == 7)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
-            }
-            //رئيس قسم التقنية الإدراية
-            else if (getUserRole == 8)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
-            }
-            //رئيس قسم ميكانيكا السيارات
-            else if (getUserRole == 9)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
-            }
-            //رئيس قسم صيانة الآلات الميكانيكية
-            else if (getUserRole == 10)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
-            }
-            //رئيس قسم التبريد وتكييف الهواء
-            else if (getUserRole == 11)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
-            }
-            // مشرفين التخصصات
-            //مشرف تخصص البرمجيات
-            else if (getUserRole == 15)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 4).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 4).ToList());
-            }
-            //مشرف تخصص الشبكات
-            else if (getUserRole == 16)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 6).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 6).ToList());
-            }
-            //مشرف تخصص الدعم الفني
-            else if (getUserRole == 17)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 5).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 5).ToList());
-            }
-            //مشرف تخصص الإدارة المكتبية
-            else if (getUserRole == 18)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 16).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 16).ToList());
-            }
-            //مشرف تخصص الإدارة المحاسبة
-            else if (getUserRole == 19)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 15).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 15).ToList());
-            }
-            //مشرف تخصص ميكانيكا السيارات
-            else if (getUserRole == 20)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 9).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 9).ToList());
-            }
-            //مشرف تخصص صيانة الآلات الميكانيكية
-            else if (getUserRole == 21)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 10).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 10).ToList());
-            }
-            //مشرف تخصص التبريد وتكييف الهواء
-            else if (getUserRole == 22)
-            {
-                ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 11).ToList();
-                return View();
-            }
-            //مدرب
-            else if (getUserRole == 12)
-            {
-                //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
-                return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList());
+                // مدير النظام و العميد و الوكلاء
+                if (getUserRole == 1 || getUserRole == 2 || getUserRole == 3 || getUserRole == 4 || getUserRole == 5)
+                {
+                    //ViewBag.Data = getTrainingGuides;
+                    return View(getTrainingGuides);
+                }
+                //رؤوساء الاقسام
+                //رئيس قسم الدرسات العامة
+                else if (getUserRole == 6)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
+                }
+                //رئيس قسم تقنية الحاسب
+                else if (getUserRole == 7)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
+                }
+                //رئيس قسم التقنية الإدراية
+                else if (getUserRole == 8)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
+                }
+                //رئيس قسم ميكانيكا السيارات
+                else if (getUserRole == 9)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
+                }
+                //رئيس قسم صيانة الآلات الميكانيكية
+                else if (getUserRole == 10)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
+                }
+                //رئيس قسم التبريد وتكييف الهواء
+                else if (getUserRole == 11)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).ToList());
+                }
+                // مشرفين التخصصات
+                //مشرف تخصص البرمجيات
+                else if (getUserRole == 15)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 4).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 4).ToList());
+                }
+                //مشرف تخصص الشبكات
+                else if (getUserRole == 16)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 6).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 6).ToList());
+                }
+                //مشرف تخصص الدعم الفني
+                else if (getUserRole == 17)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 5).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 5).ToList());
+                }
+                //مشرف تخصص الإدارة المكتبية
+                else if (getUserRole == 18)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 16).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 16).ToList());
+                }
+                //مشرف تخصص الإدارة المحاسبة
+                else if (getUserRole == 19)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 15).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 15).ToList());
+                }
+                //مشرف تخصص ميكانيكا السيارات
+                else if (getUserRole == 20)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 9).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 9).ToList());
+                }
+                //مشرف تخصص صيانة الآلات الميكانيكية
+                else if (getUserRole == 21)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 10).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 10).ToList());
+                }
+                //مشرف تخصص التبريد وتكييف الهواء
+                else if (getUserRole == 22)
+                {
+                    ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.MajorId == 11).ToList();
+                    return View();
+                }
+                //مدرب
+                else if (getUserRole == 12)
+                {
+                    //ViewBag.Data = db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+                    return View(db.TrainingGuides.Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList());
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Login", "Account");
             }
+           
 
             //var trainingGuides = db.TrainingGuides.Include(t => t.Major).Include(t => t.Term).Include(t => t.User);
             //return View(trainingGuides.ToList());
