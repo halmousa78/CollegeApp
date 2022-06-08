@@ -7,10 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CollegeApp.Data;
+using CollegeApp.Models;
 using CollegeApp.Models.ImprovementIndicator;
 
 namespace CollegeApp.Controllers
 {
+    [Permission]
+    [ViewPermissionFilter(ViewId = 1)]
     public class ImprovementIndicatorsController : Controller
     {
         private MyDbContext db = new MyDbContext();
@@ -18,13 +21,22 @@ namespace CollegeApp.Controllers
         // GET: ImprovementIndicators
         public ActionResult Index()
         {
-            var getRole = Convert.ToInt32(Session["RoleId"].ToString());
-            var getRoleName = db.Roles.Where(x => x.RoleId == getRole).Select(x => x.RoleName).FirstOrDefault();
-            var improvementIndicators = db.ImprovementIndicators.Include(i => i.InitiativeScope).Include(i => i.Subject).Where(x => x.ResponsibleEntity == getRoleName);
+            if (!(Session["UserEmail"] == null))
+            {
+                var getRole = Convert.ToInt32(Session["RoleId"].ToString());
+                var getRoleName = db.Roles.Where(x => x.RoleId == getRole).Select(x => x.RoleName).FirstOrDefault();
+                var improvementIndicators = db.ImprovementIndicators.Include(i => i.InitiativeScope).Include(i => i.Subject).Where(x => x.ResponsibleEntity == getRoleName);
 
-            return View(improvementIndicators.ToList());
+                ViewBag.RoleId = getRole;
+                return View(improvementIndicators.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
+        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult MyIndex()
         {
 
@@ -72,6 +84,7 @@ namespace CollegeApp.Controllers
 
 
         // GET: ImprovementIndicators/Details/5
+        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -114,6 +127,7 @@ namespace CollegeApp.Controllers
         }
 
         // GET: ImprovementIndicators/Edit/5
+        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult Edit(int? id)
         {
             if (id == null)

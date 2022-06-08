@@ -129,7 +129,35 @@ namespace CollegeApp.Controllers
                 //مدرب
                 else if (getUserRole == 12)
                 {
-                    ViewBag.Data = db.Grade06.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+                    if ((int)Session["DepartmentId"]  == 1)
+                    {
+                        ViewBag.Data = db.Grade01.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+
+                    }
+                    else if ((int)Session["DepartmentId"] == 2)
+                    {
+                        ViewBag.Data = db.Grade02.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+
+                    }
+                    else if ((int)Session["DepartmentId"] == 3)
+                    {
+                        ViewBag.Data = db.Grade03.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+
+                    }
+                    else if ((int)Session["DepartmentId"] == 4)
+                    {
+                        ViewBag.Data = db.Grade04.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+
+                    }
+                    else if ((int)Session["DepartmentId"] == 5)
+                    {
+                        ViewBag.Data = db.Grade05.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+
+                    }
+                    else
+                    {
+                        ViewBag.Data = db.Grade06.Include(x => x.Course).Include(x => x.Major).Include(x => x.Term).Include(x => x.User).Include(x => x.Major.Department).Include(x => x.Major.TrainingType).Include(x => x.ProgramType).Where(x => x.UserId == getUserId).ToList();
+                    }
                     return View();
                 }
                 else
@@ -179,11 +207,17 @@ namespace CollegeApp.Controllers
 
 
                                 Grade ged = new Grade();
+                                //مواد الدراسات العامة
                                 Grade01 ged1 = new Grade01();
+                                //الحاسب 
                                 Grade02 ged2 = new Grade02();
+                                //ميكانيكا السيارات
                                 Grade03 ged3 = new Grade03();
+                                //صيانة الآلات الميكانيكية
                                 Grade04 ged4 = new Grade04();
+                                //التبريد وتكييف الهواء
                                 Grade05 ged5 = new Grade05();
+                                //التقنية الإدارية
                                 Grade06 ged6 = new Grade06();
 
                                 Section sec = new Section();
@@ -380,7 +414,7 @@ namespace CollegeApp.Controllers
                                         db.Grade01.Add(ged1);
                                     }
                                     else if (ged.MajorId == 4 || ged.MajorId == 5 || ged.MajorId == 6 || ged.MajorId == 7 || ged.MajorId == 23 || ged.MajorId == 24)
-                                    {
+                                    { 
                                         ged2.Grade02Id = 0;
                                         if (db.Grade02.Select(x => x.Grade02Id).FirstOrDefault() == 0)
                                         {

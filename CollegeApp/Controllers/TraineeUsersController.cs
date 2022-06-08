@@ -7,10 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CollegeApp.Data;
+using CollegeApp.Models;
 using CollegeApp.Models.Account;
 
 namespace CollegeApp.Controllers
 {
+    [Permission]
+    [ViewPermissionFilter(ViewId = 1)]
     public class TraineeUsersController : Controller
     {
         private MyDbContext db = new MyDbContext();

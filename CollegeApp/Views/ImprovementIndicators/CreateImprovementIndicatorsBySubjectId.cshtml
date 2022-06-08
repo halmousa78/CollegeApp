@@ -110,7 +110,7 @@
             }
 
             <div>
-                @Html.ActionLink(CollegeApp.Resource.Resource.Back, "GetImprovementIndicatorsBySubjectId", "ImprovementIndicators")
+                @Html.ActionLink(CollegeApp.Resource.Resource.Back, "GetImprovementIndicatorsBySubjectId", "ImprovementIndicators",new { Id = ViewBag.SubjectId },null)
             </div>
 
 

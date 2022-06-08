@@ -14,11 +14,14 @@ using LumenWorks.Framework.IO.Csv;
 
 namespace CollegeApp.Models.TrainingGuide
 {
+    [Permission]
+    [ViewPermissionFilter(ViewId = 1)]
     public class TrainingGuidesController : Controller
     {
         private MyDbContext db = new MyDbContext();
 
         // GET: TrainingGuides
+        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult Index()
         {
             if (Session["UserName"] != null)
@@ -142,7 +145,6 @@ namespace CollegeApp.Models.TrainingGuide
             //return View(trainingGuides.ToList());
         }
         [ViewPermissionFilter(ViewId = 13)]
-
         public ActionResult TrainingGuideList()
         {
             if (Session["UserName"] != null)
@@ -210,7 +212,7 @@ namespace CollegeApp.Models.TrainingGuide
                                 tg.TraineeName = Convert.ToString(row[8]);
 
                                 tg.ProgramTypeId = selected;
-
+                                tg.Status = false;
 
 
                                 db.TrainingGuides.Add(tg);
@@ -289,6 +291,7 @@ namespace CollegeApp.Models.TrainingGuide
         }
 
         // GET: TrainingGuides/Edit/5
+        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -312,6 +315,7 @@ namespace CollegeApp.Models.TrainingGuide
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult Edit([Bind(Include = "TrainingGuideId,TermId,MajorId,UserId,TraineeName,TraineeNumber,ProgramTypeId,RegistrationOfCoursesAccordingToTheTrainingPlan,TrainingLevel,ExplanationOfTheTrainingPlan,TrainingAverageLevel,Notes")] TrainingGuide trainingGuide)
         {
             if (ModelState.IsValid)
@@ -322,6 +326,14 @@ namespace CollegeApp.Models.TrainingGuide
                 getTrainingGuideIdData.TrainingAverageLevel = trainingGuide.TrainingAverageLevel;
                 getTrainingGuideIdData.TrainingLevel = trainingGuide.TrainingLevel;
                 getTrainingGuideIdData.Notes = trainingGuide.Notes;
+                if (getTrainingGuideIdData.ExplanationOfTheTrainingPlan == true && getTrainingGuideIdData.RegistrationOfCoursesAccordingToTheTrainingPlan==true && getTrainingGuideIdData.TrainingAverageLevel==true && getTrainingGuideIdData.TrainingLevel==true)
+                {
+                    getTrainingGuideIdData.Status = true;
+                }
+                else
+                {
+                    getTrainingGuideIdData.Status = false;
+                }
 
                 db.Entry(getTrainingGuideIdData);
                 db.SaveChanges();

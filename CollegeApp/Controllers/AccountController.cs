@@ -45,6 +45,7 @@ namespace CollegeApp.Controllers
                     Session["UserName"] = UserData.UserName;
                     Session["UserEmail"] = UserData.UserEmail;
                     Session["UserImage"] = UserData.Image;
+                    Session["DepartmentId"] = UserData.DepartmentId;
                     ViewModel viewModel = new ViewModel();
                     var view = db.UserViewRoles.Where(x => x.RoleId == UserData.RoleId).ToList();
                     viewModel.ViewIds = view.Select(x => x.UserViewId).ToList();
@@ -69,6 +70,7 @@ namespace CollegeApp.Controllers
                     Session["UserName"] = TraineeUserData.TraineeUserName;
                     Session["UserEmail"] = TraineeUserData.TraineeUserEmail;
                     Session["UserImage"] = UserData.Image;
+                    Session["DepartmentId"] = UserData.DepartmentId;
                     ViewModel viewModel = new ViewModel();
                     var view = db.UserViewRoles.Where(x => x.RoleId == TraineeUserData.RoleId).ToList();
                     viewModel.ViewIds = view.Select(x => x.UserViewId).ToList();

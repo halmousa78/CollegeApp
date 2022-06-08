@@ -11,6 +11,8 @@ using CollegeApp.Models;
 
 namespace CollegeApp.Controllers
 {
+    [Permission]
+    [ViewPermissionFilter(ViewId = 1)]
     public class DepartmentTypesController : Controller
     {
         private MyDbContext db = new MyDbContext();

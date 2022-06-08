@@ -4,45 +4,56 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Subject</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ImprovementIndicatorSubject.ImprovementIndicatorSubjectName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImprovementIndicatorSubject.ImprovementIndicatorSubjectName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubjectName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubjectName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubjectDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubjectDescription)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">حذف موضوع خطة التحسين</strong>
         </div>
-    }
+        <div class="card-body">
+
+            <h3>هل انت متاكد من حذف هذا السجل ؟</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImprovementIndicatorSubject.ImprovementIndicatorSubjectName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ImprovementIndicatorSubject.ImprovementIndicatorSubjectName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SubjectName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SubjectName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SubjectDescription)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SubjectDescription)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="@CollegeApp.Resource.Resource.Delete" class="@CollegeApp.Resource.Resource.DeleteStyle" /><br /><br />
+                @Html.ActionLink(CollegeApp.Resource.Resource.Back, "Index")
+            </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
 </div>
+

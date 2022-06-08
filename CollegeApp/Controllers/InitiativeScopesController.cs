@@ -7,10 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CollegeApp.Data;
+using CollegeApp.Models;
 using CollegeApp.Models.ImprovementIndicator;
 
 namespace CollegeApp.Controllers
 {
+    [Permission]
+    [ViewPermissionFilter(ViewId = 1)]
     public class InitiativeScopesController : Controller
     {
         private MyDbContext db = new MyDbContext();

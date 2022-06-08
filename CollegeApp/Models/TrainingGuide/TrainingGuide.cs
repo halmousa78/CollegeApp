@@ -36,5 +36,7 @@ namespace CollegeApp.Models.TrainingGuide
         public bool TrainingAverageLevel{ get; set; }
         [Display(Name = "ملاحظات ")]
         public string Notes { get; set; }
+        [Display(Name = "الحالة")]
+        public bool Status { get; set; }
     }
 }

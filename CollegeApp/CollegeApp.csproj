@@ -234,6 +234,10 @@
     <Compile Include="Migrations\202205180648595_tt11.Designer.cs">
       <DependentUpon>202205180648595_tt11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206060834002_addFieldToTrainingGuideTbl.cs" />
+    <Compile Include="Migrations\202206060834002_addFieldToTrainingGuideTbl.Designer.cs">
+      <DependentUpon>202206060834002_addFieldToTrainingGuideTbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ResetPasswordModel.cs" />
     <Compile Include="Models\Account\TraineeUser.cs" />
@@ -694,6 +698,9 @@
     <Content Include="Doc\Data\رايات\1442\morning\SF24_lec_1442_semester2_morning_diploma.csv" />
     <Content Include="Doc\Data\نتائج.xlsx" />
     <Content Include="Doc\Data\رايات\1442\الارشاد\sm01.csv" />
+    <Content Include="fonts\WwkbxPW1E165rajQKDulIIcoVQ.woff2" />
+    <Content Include="fonts\WwkbxPW1E165rajQKDulIIIoVeo5.woff2" />
+    <Content Include="fonts\WwkbxPW1E165rajQKDulIIkoVeo5.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -982,6 +989,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205180648595_tt11.resx">
       <DependentUpon>202205180648595_tt11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206060834002_addFieldToTrainingGuideTbl.resx">
+      <DependentUpon>202206060834002_addFieldToTrainingGuideTbl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource\Resource.en1.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
