@@ -296,12 +296,16 @@
     <Content Include="App_Data\MyDbContext-20220311170650_log.ldf">
       <DependentUpon>MyDbContext-20220311170650.mdf</DependentUpon>
     </Content>
+    <Content Include="BackupDb\script_without_data.sql" />
+    <Content Include="BackupDb\script_with_data.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Cvs\Images\Default.png" />
     <Content Include="Content\Cvs\Style.css" />
+    <Content Include="Content\DataTable\jquery.dataTables.min.css" />
+    <Content Include="Content\hijri\bootstrap-datetimepicker.css" />
     <Content Include="Content\MyStyle\alert.html" />
     <Content Include="Content\MyStyle\badge.html" />
     <Content Include="Content\MyStyle\button.html" />
@@ -702,6 +706,11 @@
     <Content Include="fonts\WwkbxPW1E165rajQKDulIIIoVeo5.woff2" />
     <Content Include="fonts\WwkbxPW1E165rajQKDulIIkoVeo5.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTable\myScript.js" />
+    <Content Include="Scripts\hijri\bootstrap-hijri-datepicker.js" />
+    <Content Include="Scripts\hijri\moment-hijri.min.js" />
+    <Content Include="Scripts\hijri\popper.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

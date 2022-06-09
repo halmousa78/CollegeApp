@@ -48,6 +48,7 @@ namespace CollegeApp.Controllers
         {
             var improvementIndicators = db.ImprovementIndicators.Include(i => i.Subject).Include(z=>z.InitiativeScope).Where(x => x.SubjectId == Id);
             ViewBag.Id = Id;
+            TempData["SubjectId"] = Id;
 
             return View(improvementIndicators.ToList());
         }
