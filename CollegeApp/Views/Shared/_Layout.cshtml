@@ -288,7 +288,7 @@
                         </li>
 
                         <li style="display:@(((CollegeApp.Models.ViewModel)Session["ViewPermission"]).ViewIds.Contains(13)==true?"block":"none")">
-                            <a href="/ImprovementIndicators/Index">
+                            <a href="/ImprovementIndicators/MyIndex">
                                 <i class="fas fa-calendar-alt"></i> خطط التحسين الخاصة بي
                             </a>
                         </li>
@@ -328,7 +328,7 @@
                                                 <div class="image">
                                                     <a href="#">
 
-                                                        <img src="@Url.Content(Session["UserImage"].ToString())" alt="John Doe" />
+                                                        <img src="@Url.Content(Session["UserImage"].ToString())" alt="لا توجد صوره" />
                                                     </a>
                                                 </div>
                                                 <div class="content">

@@ -92,6 +92,14 @@
                     <dd>
                         @Html.DisplayFor(model => model.Notes)
                     </dd>
+                    @if (Model.File != null)
+                    {
+                        <dd>
+                            @Html.ActionLink("تنزيل ملف الشاهد", "DownloadFile", new { downloadFile = Model.File })
+
+                        </dd>
+                    }
+
 
                 </dl>
             </div>

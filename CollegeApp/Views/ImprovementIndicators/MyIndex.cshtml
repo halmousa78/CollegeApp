@@ -24,72 +24,80 @@
                     <th>
                         @Html.DisplayNameFor(model => model.ImprovementIndicatorName)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImprovementIndicatorStatus)
+                    </th>
                     @*<th>
-                        @Html.DisplayNameFor(model => model.CompletionRequirements)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResponsibleEntity)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.SupportingEntity)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AchievementStandard)
-                    </th>*@
+            @Html.DisplayNameFor(model => model.CompletionRequirements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponsibleEntity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupportingEntity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AchievementStandard)
+        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.DueDate)
                     </th>
                     @*<th>
-                        @Html.DisplayNameFor(model => model.ImprovementIndicatorStatus)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Notes)
-                    </th>*@
+            @Html.DisplayNameFor(model => model.ImprovementIndicatorStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>*@
                     <th></th>
                 </tr>
 
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ImprovementIndicatorName)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.CompletionRequirements)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResponsibleEntity)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SupportingEntity)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AchievementStandard)
-                        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DueDate)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.ImprovementIndicatorStatus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Notes)
-                        </td>*@
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new
-                            {
-                                id = item.ImprovementIndicatorId
-                                }) |
-                            @Html.ActionLink("Details", "Details", new
-                            {
-                                id = item.ImprovementIndicatorId
-            }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ImprovementIndicatorId })
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImprovementIndicatorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImprovementIndicatorStatus)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.CompletionRequirements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponsibleEntity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupportingEntity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AchievementStandard)
+        </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.ImprovementIndicatorStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>*@
+            <td>
+                @Html.ActionLink("Edit", "EditImprovementIndicators", new
+                {
+                    id = item.ImprovementIndicatorId
+                    }) |
+                @Html.ActionLink("Details", "Details", new
+                {
+                    id = item.ImprovementIndicatorId
+}) |
+                @Html.ActionLink("رفع ملف الشاهد", "UploadFile", new
+           {
+               id = item.ImprovementIndicatorId
+           })</td>
+            </tr>
                 }
 
             </table>

@@ -238,6 +238,10 @@
     <Compile Include="Migrations\202206060834002_addFieldToTrainingGuideTbl.Designer.cs">
       <DependentUpon>202206060834002_addFieldToTrainingGuideTbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206110729045_FileTableImprovementIndicator.cs" />
+    <Compile Include="Migrations\202206110729045_FileTableImprovementIndicator.Designer.cs">
+      <DependentUpon>202206110729045_FileTableImprovementIndicator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ResetPasswordModel.cs" />
     <Compile Include="Models\Account\TraineeUser.cs" />
@@ -887,8 +891,11 @@
     <Content Include="Views\Courses1\Details.cshtml" />
     <Content Include="Views\Courses1\Edit.cshtml" />
     <Content Include="Views\Courses1\Index.cshtml" />
+    <Content Include="Views\ImprovementIndicators\EditImprovementIndicators.cshtml" />
+    <Content Include="Views\ImprovementIndicators\UploadFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\ImprovementIndicators\" />
     <Folder Include="Models\Cvs\ViewModel\" />
     <Folder Include="Models\TrainingGuide\Old\" />
     <Folder Include="PagedList\" />
@@ -949,6 +956,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206060834002_addFieldToTrainingGuideTbl.resx">
       <DependentUpon>202206060834002_addFieldToTrainingGuideTbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206110729045_FileTableImprovementIndicator.resx">
+      <DependentUpon>202206110729045_FileTableImprovementIndicator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource\Resource.en1.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -65,12 +66,12 @@ namespace CollegeApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateImprovementIndicatorsBySubjectId([Bind(Include = "ImprovementIndicatorId,ImprovementIndicatorName,CompletionRequirements,ResponsibleEntity,SupportingEntity,AchievementStandard,DueDate,SubjectId,ImprovementIndicatorStatus,Notes,InitiativeScopeId")] ImprovementIndicator improvementIndicator)
+        public ActionResult CreateImprovementIndicatorsBySubjectId([Bind(Include = "ImprovementIndicatorId,ImprovementIndicatorName,CompletionRequirements,ResponsibleEntity,SupportingEntity,AchievementStandard,DueDate,SubjectId,Notes,InitiativeScopeId")] ImprovementIndicator improvementIndicator)
         {
             if (ModelState.IsValid)
             {
-               
 
+                improvementIndicator.ImprovementIndicatorStatus = "جاري العمل";
 
                 db.ImprovementIndicators.Add(improvementIndicator);
                 db.SaveChanges();
@@ -128,7 +129,6 @@ namespace CollegeApp.Controllers
         }
 
         // GET: ImprovementIndicators/Edit/5
-        [ViewPermissionFilter(ViewId = 13)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -149,9 +149,7 @@ namespace CollegeApp.Controllers
             return View(improvementIndicator);
         }
 
-        // POST: ImprovementIndicators/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ImprovementIndicatorId,ImprovementIndicatorName,CompletionRequirements,ResponsibleEntity,SupportingEntity,AchievementStandard,DueDate,SubjectId,ImprovementIndicatorStatus,Notes,InitiativeScopeId")] ImprovementIndicator improvementIndicator)
@@ -166,6 +164,43 @@ namespace CollegeApp.Controllers
             ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", improvementIndicator.SubjectId);
             return View(improvementIndicator);
         }
+
+        public ActionResult EditImprovementIndicators(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ImprovementIndicator improvementIndicator = db.ImprovementIndicators.Find(id);
+            if (improvementIndicator == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.ResponsibleEntity = new SelectList(db.Roles, "RoleName", "RoleName", "RoleName", "RoleName", improvementIndicator.ResponsibleEntity);
+            ViewBag.SupportingEntity = new SelectList(db.Roles, "RoleName", "RoleName", "RoleName", "RoleName", improvementIndicator.SupportingEntity);
+
+            ViewBag.InitiativeScopeId = new SelectList(db.InitiativeScopes, "InitiativeScopeId", "InitiativeScopeName", improvementIndicator.InitiativeScopeId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", improvementIndicator.SubjectId);
+            return View(improvementIndicator);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditImprovementIndicators([Bind(Include = "ImprovementIndicatorId,ImprovementIndicatorName,CompletionRequirements,ResponsibleEntity,SupportingEntity,AchievementStandard,DueDate,SubjectId,ImprovementIndicatorStatus,Notes,InitiativeScopeId")] ImprovementIndicator improvementIndicator)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(improvementIndicator).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MyIndex");
+            }
+            ViewBag.InitiativeScopeId = new SelectList(db.InitiativeScopes, "InitiativeScopeId", "InitiativeScopeName", improvementIndicator.InitiativeScopeId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", improvementIndicator.SubjectId);
+            return View(improvementIndicator);
+        }
+
 
         // GET: ImprovementIndicators/Delete/5
         public ActionResult Delete(int? id)
@@ -191,6 +226,61 @@ namespace CollegeApp.Controllers
             db.ImprovementIndicators.Remove(improvementIndicator);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UploadFile(int? id)
+        {
+            ViewBag.ImprovementIndicatorsId = id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile(int ImprovementIndicatorsId, HttpPostedFileBase UploadFile)
+        {
+            var getImprovementIndicatorsById = db.ImprovementIndicators.Find(ImprovementIndicatorsId);
+
+            if (getImprovementIndicatorsById != null)
+            {
+                if (UploadFile != null)
+                {
+                                  
+
+                    string filename = Path.GetFileNameWithoutExtension(UploadFile.FileName);
+                    string extension = Path.GetExtension(UploadFile.FileName);
+                    //filename = filename+DateTime.Now.ToString("yymmssff")+ extension;
+                    filename = ImprovementIndicatorsId + extension;
+
+                    getImprovementIndicatorsById.File = "~/Content/ImprovementIndicators/" + filename;
+
+
+                    UploadFile.SaveAs(Path.Combine(Server.MapPath("~/Content/ImprovementIndicators/"), filename));
+
+
+                }
+                else
+                {
+                    return View();
+
+                }
+
+
+                db.Entry(getImprovementIndicatorsById);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("MyIndex");
+        }
+
+        public ActionResult DownloadFile(string downloadFile)
+        {
+            if (downloadFile != null)
+            {
+                //var FileVirtualPath = "~/Content/ImprovementIndicators/" + downloadFile;
+                return File(downloadFile, "application/force-download", Path.GetFileName(downloadFile));
+            }
+           
+             return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)

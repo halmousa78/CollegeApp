@@ -35,6 +35,11 @@ namespace CollegeApp.Models.ImprovementIndicator
         [Display(Name = "نطاق المبادرة")]
         public int InitiativeScopeId { get; set; }
         public InitiativeScope InitiativeScope { get; set; }
+        [Display(Name = "ملف الشاهد")]
+        public string File { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase FileUpload { get; set; }
 
     }
 }
