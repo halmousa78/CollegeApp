@@ -657,6 +657,13 @@
     <Content Include="fonts\WwkbxPW1E165rajQKDulIIcoVQ.woff2" />
     <Content Include="fonts\WwkbxPW1E165rajQKDulIIIoVeo5.woff2" />
     <Content Include="fonts\WwkbxPW1E165rajQKDulIIkoVeo5.woff2" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Black.ttf" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Bold-2.ttf" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-ExtraBold.ttf" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-ExtraLight.ttf" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Light.ttf" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Medium.ttf" />
+    <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Regular-2.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTable\myScript.js" />
