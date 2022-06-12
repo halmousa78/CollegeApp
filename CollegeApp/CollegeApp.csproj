@@ -685,6 +685,7 @@
     <Content Include="Scripts\pivot\jquery-ui.min.js" />
     <Content Include="Scripts\pivot\jquery.min.js" />
     <Content Include="Scripts\pivot\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\pivot\pivot.js" />
     <Content Include="Scripts\pivot\pivot.min.js" />
     <Content Include="Scripts\pivot\tips_data.min.js" />
     <Content Include="Web.config" />
