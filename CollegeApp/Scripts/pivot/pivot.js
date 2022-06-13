@@ -449,7 +449,7 @@
           uiRenderError: "An error occurred rendering the PivotTable UI.",
           selectAll: " تحديد الكل",
           selectNone: "إلغاء التحديد",
-          tooMany: "(too many to list)",
+          tooMany: "(العدد كبير جدا لا يمكن عرضه)",
           filterResults: "Filter values",
           apply: "تطبيق ",
           cancel: " إلغاء",

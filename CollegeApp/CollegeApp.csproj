@@ -314,6 +314,7 @@
     <Content Include="Content\MyStyle\calendar.html" />
     <Content Include="Content\MyStyle\card.html" />
     <Content Include="Content\MyStyle\chart.html" />
+    <Content Include="Content\MyStyle\css\fontawosme6.css" />
     <Content Include="Content\MyStyle\css\bootstrap-datetimepicker.min - Copy.css" />
     <Content Include="Content\MyStyle\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\MyStyle\css\font-face.css" />

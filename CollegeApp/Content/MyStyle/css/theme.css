@@ -4241,7 +4241,7 @@ section {
 }
 
 .table-earning thead th {
-    background: #333;
+    background: rgb(69, 203, 236);
     font-size: 16px;
     color: #fff;
     vertical-align: middle;
