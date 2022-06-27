@@ -22,8 +22,8 @@
     <link href="/Content/MyStyle/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <!--add Font awsome6-->
 
-    @*<link href="~/Content/MyStyle/css/fontawosme6.css" rel="stylesheet" media="all" />*@
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="~/Content/MyStyle/css/fontawosme6.css" rel="stylesheet" media="all" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">*@
 
     <!-- Vendor CSS-->
     <link href="/Content/MyStyle/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
@@ -106,7 +106,7 @@
 
 
                             <li style="display:@(((CollegeApp.Models.ViewModel)Session["ViewPermission"]).ViewIds.Contains(13)==true?"block":"none")">
-                                <a href="/Users/UserCv"><i class="fa fa-user"></i>السيرة الذاتية</a>
+                                <a href="/Users/UserCv"><i class="fas fa-calendar-alt"></i>السيرة الذاتية</a>
 
                             </li>
                             <li class="has-sub" style="display:@(((CollegeApp.Models.ViewModel)Session["ViewPermission"]).ViewIds.Contains(1)==true?"block":"none")">
@@ -144,7 +144,7 @@
 
                             <li class="has-sub" style="display:@(((CollegeApp.Models.ViewModel)Session["ViewPermission"]).ViewIds.Contains(1)==true?"block":"none")">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-copy"></i>ادارة خطط التحسين
+                                    <i class="fa-solid fa-file-user"></i>ادارة خطط التحسين
                                 </a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li style="display:@(((CollegeApp.Models.ViewModel)Session["ViewPermission"]).ViewIds.Contains(1)==true?"block":"none")">

@@ -665,6 +665,14 @@
     <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Light.ttf" />
     <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Medium.ttf" />
     <Content Include="Content\MyStyle\fonts\Tajawal\ArbFONTS-Tajawal-Regular-2.ttf" />
+    <Content Include="Content\MyStyle\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\MyStyle\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\MyStyle\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\MyStyle\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\MyStyle\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\MyStyle\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\MyStyle\webfonts\fa-v4compatibility.ttf" />
+    <Content Include="Content\MyStyle\webfonts\fa-v4compatibility.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTable\myScript.js" />
@@ -748,7 +756,7 @@
     <Content Include="Views\Majors\Details.cshtml" />
     <Content Include="Views\Majors\Edit.cshtml" />
     <Content Include="Views\Majors\Index.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\login2.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
