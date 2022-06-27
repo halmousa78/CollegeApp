@@ -354,7 +354,7 @@
     <Content Include="Content\MyStyle\images\icon\logo-blue.png" />
     <Content Include="Content\MyStyle\images\icon\logo-mini.png" />
     <Content Include="Content\MyStyle\images\icon\logo-white.png" />
-    <Content Include="Content\MyStyle\images\icon\logo.png" />
+    <Content Include="Content\MyStyle\images\icon\ACT_LOGO.png" />
     <Content Include="Content\MyStyle\images\icon\Untitled-1.jpg" />
     <Content Include="Content\MyStyle\inbox.html" />
     <Content Include="Content\MyStyle\index.html" />
